@@ -48,14 +48,45 @@ class FrontendController extends Controller
         return redirect("/");
     }
 
-/*************  ✨ Windsurf Command ⭐  *************/
-    /**
-/*******  781b20b5-99d1-4d64-9851-3d9aa1e981b9  *******/
     public function delete_company($id)
     {
         $company = Company::find($id);
         $company->delete();
         toast("Company Deleted Successfully","success");
+        return redirect()->back();
+    }
+
+    public function edit_company($id)
+    {
+        $company = Company::find($id);
+        return view("edit-company", compact('company'));
+    }
+
+
+    public function update_company(Request $request, $id)
+    {
+        // return $request;
+        $request->validate([
+            "name" => "required|alpha_dash|lowercase",
+            "email" => "required|email|max:100|min:10",
+            "phone" => "required|numeric|digits:10",
+            "add" => "required",
+            "logo" => "nullable|image|mimes:png,jpg,jpeg|max:2048"
+        ]);
+        $company = Company::find($id);
+        $company->name = $request->name;
+        $company->email = $request->email;
+        $company->phone = $request->phone;
+        $company->address = $request->add;
+        $logo = $request->logo;
+        if ($logo) {
+            $fileName = time() . "." . $logo->getClientOriginalExtension(); //123456.png
+            $logo->move("images", $fileName);
+            $company->logo = "images/" . $fileName;
+        }
+        $company->update();
+        toast("Company Updated Successfully","success");
+
         return redirect()->back();
     }
 }

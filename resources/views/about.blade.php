@@ -43,6 +43,7 @@
                                 <form action="/delete-company/{{ $c->id }}" method="post">
                                     @csrf
                                     @method('delete')
+                                    <a href="/edit-company/{{ $c->id }}">Edit</a>
                                     <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded">
                                         Delete
                                     </button>
