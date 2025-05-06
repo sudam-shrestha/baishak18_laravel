@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FrontendController;
 use App\Models\Company;
 use Illuminate\Http\Request;
@@ -10,11 +11,17 @@ Route::get('/', [FrontendController::class,'welcome']);
 
 Route::get("/about", [FrontendController::class,'about']);
 
-
+// Company Routes
 Route::post("/save-company", [FrontendController::class,'save_company']);
 Route::delete("/delete-company/{id}", [FrontendController::class,'delete_company']);
 Route::get("/edit-company/{id}", [FrontendController::class,'edit_company']);
 Route::patch("/update-company/{id}", [FrontendController::class,'update_company']);
+
+
+// Course ROutes
+Route::get("/course", [CourseController::class,'course']);
+Route::post("/save-course", [CourseController::class,'save_course']);
+
 
 // HTTP Method
 //get->read
