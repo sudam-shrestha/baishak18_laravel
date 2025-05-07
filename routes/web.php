@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\StudentController;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,8 @@ Route::post("/save-course", [CourseController::class,'save_course']);
 Route::get("/admission", [AdmissionController::class,'index'])->name('admission');
 Route::post("/admission/store", [AdmissionController::class,'store'])->name('admission.store');
 
-
+// Student Route
+Route::resource("/student", StudentController::class)->names('student');
 
 // HTTP Method
 //get->read
