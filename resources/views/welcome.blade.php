@@ -4,7 +4,7 @@
     <section class="py-20">
         <div class="container">
             <h1 class="text-center text-[32px] mb-5">Company Create</h1>
-            <form action="/save-company" method="post" enctype="multipart/form-data">
+            <form action="{{route('save_company')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="grid grid-cols-2 gap-5">
 

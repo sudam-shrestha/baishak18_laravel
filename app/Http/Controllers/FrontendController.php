@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class FrontendController extends Controller
 {
@@ -43,9 +44,9 @@ class FrontendController extends Controller
             $company->logo = "images/" . $fileName;
         }
         $company->save();
-        toast("Company Created Successfully","success");
+        toast("course Created Successfully","success");
 
-        return redirect("/");
+        return redirect()->back();
     }
 
     public function delete_company($id)

@@ -40,7 +40,7 @@
                                 <img src="{{ asset($c->logo) }}" class="h-[40px]" alt="">
                             </td>
                             <td class="border p-2">
-                                <form action="/delete-company/{{ $c->id }}" method="post">
+                                <form action="{{ route('delete_company', $c->id) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <a href="/edit-company/{{ $c->id }}">Edit</a>
